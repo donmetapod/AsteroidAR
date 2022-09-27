@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 540625007011055088}
   - component: {fileID: 540625007011055091}
   - component: {fileID: 2474090991002737380}
+  - component: {fileID: -514007596600166688}
+  - component: {fileID: -5957893914526045192}
   m_Layer: 0
   m_Name: HealthItem
   m_TagString: Untagged
@@ -78,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1f098fe1d11954fbdbc98389ff0654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 1
+  _moveSpeed: 8
 --- !u!114 &540625007011055091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +110,69 @@ MonoBehaviour:
   _tagToCompare: Player
   _healingPower: 10
   OnHeal:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -514007596600166688}
+        m_TargetAssemblyTypeName: Health, Assembly-CSharp
+        m_MethodName: ReceiveDamage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &-514007596600166688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540625007011055090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65c27d8459d4bbc4fa8a5f4c6a64d919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _currentHealth: 100
+  OnReceiveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnZeroHealth:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5957893914526045192}
+        m_TargetAssemblyTypeName: DestroyObject, Assembly-CSharp
+        m_MethodName: DestroyWithDelay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnReceiveHealth:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &-5957893914526045192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540625007011055090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8247d3da33f17545b4fec8ca507f35e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _destroyDelay: 0
+  OnDestroy:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5473295671918279358
@@ -206,6 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9538dfede5cbf3438e04153d57f5e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: {x: 1, y: 2, z: 3}
+  _speed: {x: 1, y: 1, z: 1}
   _randomizeInitialRotation: 1
-  _randomizationFactor: 1
+  _randomizationFactor: 5

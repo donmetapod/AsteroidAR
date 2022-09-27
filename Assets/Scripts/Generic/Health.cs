@@ -20,7 +20,13 @@ public class Health : MonoBehaviour
         get => _currentHealth;
         set => _currentHealth = value;
     }
-    
+
+    public int MaxHealth
+    {
+        get => _maxHealth;
+        set => _maxHealth = value;
+    }
+
     public void ReceiveDamage(int damageAmount)
     {
         CurrentHealth -= damageAmount;

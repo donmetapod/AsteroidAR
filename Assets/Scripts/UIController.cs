@@ -41,4 +41,9 @@ public class UIController : MonoBehaviour
     {
         _gameOverScreen.SetActive(true);
     }
+
+    public void RetryGame()
+    {
+        SceneLoader.LoadScene("Game");
+    }
 }

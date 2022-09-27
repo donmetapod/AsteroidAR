@@ -18,10 +18,10 @@ public class SpawnInColliderArea : MonoBehaviour
     {
         while (!_gameState.GameOver)
         {
-            yield return new WaitForSeconds(_spawnDelayTime);
             _spawnPosition = GetSpawnPosition();
             GameObject clone = Instantiate(_prefab, _spawnPosition, Quaternion.identity);
             clone.name = $"{clone.name} {clone.GetInstanceID()}";
+            yield return new WaitForSeconds(_spawnDelayTime);
         }
     }
 

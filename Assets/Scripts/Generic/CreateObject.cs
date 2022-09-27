@@ -12,7 +12,9 @@ public class CreateObject : MonoBehaviour
     private Quaternion _objectRotation;
     [SerializeField] private int _amountOfObjects = 1;
     [SerializeField] private bool _randomizeInitialPositon;
-    [SerializeField] private float _initialPositionRandomizationFactor = 1;
+    [SerializeField] private float _xRandomizationFactor = 1;
+    [SerializeField] private float _yRandomizationFactor = 1;
+    [SerializeField] private float _zRandomizationFactor = 1;
     
     public void CreateNewObject()
     {
@@ -31,10 +33,14 @@ public class CreateObject : MonoBehaviour
                     Vector3 spawnPoint = transform.position;
                     if (_randomizeInitialPositon)
                     {
-                        spawnPoint *= Random.Range(-_initialPositionRandomizationFactor, _initialPositionRandomizationFactor);
+                        spawnPoint.x += Random.Range(-_xRandomizationFactor, _xRandomizationFactor);
+                        spawnPoint.y += Random.Range(-_yRandomizationFactor, _yRandomizationFactor);
+                        spawnPoint.z += Random.Range(-_zRandomizationFactor, _zRandomizationFactor);
                     }
                     GameObject clone = Instantiate(_objectToCreate, spawnPoint, _objectRotation);
                     clone.name = $"{clone.name} {clone.GetInstanceID()}";
+                    
+                    // Debug.Log($"Object created in position {clone.transform.position}");
                 }    
             } 
         }

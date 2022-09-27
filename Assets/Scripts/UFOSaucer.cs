@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,6 +23,9 @@ public class UFOSaucer : MonoBehaviour
     [SerializeField] private UnityEvent OnStopAttacking;
     [SerializeField] private int _cooldownMinTime = 5;
     [SerializeField] private int _cooldownMaxTime = 15;
+    [SerializeField] private bool _spawnMysteryBoxOnDeath;
+    [SerializeField] private GameObject _mysteryBox;
+    [SerializeField] private GameState _gameState;
     
     public UFOStates CurrentState
     {
@@ -49,11 +51,14 @@ public class UFOSaucer : MonoBehaviour
         {
             _player = playerObject.transform;
         }
-        CurrentState = UFOStates.Attacking;
+        CurrentState = UFOStates.Idle;
     }
     
     public void StartAttacking()
     {
+        if (_player == null)
+            return;
+        
         // Define spawn position
         Vector3 spawnPosition = GetNewPositionVector();
         transform.position = spawnPosition;
@@ -94,12 +99,23 @@ public class UFOSaucer : MonoBehaviour
         StartCoroutine(IdleRoutine());
     }
 
-    IEnumerator IdleRoutine()
+    private IEnumerator IdleRoutine()
     {
         transform.position = new Vector3(1000, 1000, 1000);
         _trajectoryVectors.Clear();
         yield return new WaitForSeconds(Random.Range(_cooldownMinTime, _cooldownMaxTime));
         CurrentState = UFOStates.Attacking;
     }
-
+    
+    public void Die()
+    {
+        StopAllCoroutines();
+        Health health = GetComponent<Health>();
+        health.CurrentHealth = health.MaxHealth;
+        StartCooldown();
+        if (_spawnMysteryBoxOnDeath)
+        {
+            Instantiate(_mysteryBox, transform.position, Quaternion.identity);
+        }
+    }
 }

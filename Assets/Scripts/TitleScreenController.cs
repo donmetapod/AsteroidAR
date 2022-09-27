@@ -6,4 +6,9 @@ public class TitleScreenController : MonoBehaviour
     {
         SceneLoader.LoadScene("Game");
     }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
