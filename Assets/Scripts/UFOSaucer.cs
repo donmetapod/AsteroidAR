@@ -16,16 +16,19 @@ public class UFOSaucer : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private float _spawnDistanceFromPlayer = 20;
     [SerializeField] private List<Vector3> _trajectoryVectors = new List<Vector3>();
-    [SerializeField] private float _xySpawnOffset = 10;
+    [SerializeField] private float _xyOffset = 10;
     [SerializeField] private int _trajectoriesPerSpawn = 2;
     [SerializeField] private float _movementSpeed = 5;
-    [SerializeField] private UnityEvent OnStartAttacking;
-    [SerializeField] private UnityEvent OnStopAttacking;
+    [SerializeField] private AudioSfx _ufoOnScene;
     [SerializeField] private int _cooldownMinTime = 5;
     [SerializeField] private int _cooldownMaxTime = 15;
     [SerializeField] private bool _spawnMysteryBoxOnDeath;
     [SerializeField] private GameObject _mysteryBox;
     [SerializeField] private GameState _gameState;
+    [SerializeField] private UnityEvent OnStartAttacking;
+    [SerializeField] private UnityEvent OnStopAttacking;
+    [SerializeField] private UnityEvent OnDie;
+    
     
     public UFOStates CurrentState
     {
@@ -69,13 +72,17 @@ public class UFOSaucer : MonoBehaviour
             _trajectoryVectors.Add(GetNewPositionVector());
         }
 
+        // Play UFO sfx
+        _ufoOnScene.PlayAudio(gameObject);
+        
         StartCoroutine(AttackMovement());
     }
 
+    // Returns a new random position for spawning and trajectory vectors using _xyOffset
     Vector3 GetNewPositionVector()
     {
-        return new Vector3(Random.Range(-_xySpawnOffset, _xySpawnOffset),
-            Random.Range(-_xySpawnOffset, _xySpawnOffset),
+        return new Vector3(Random.Range(-_xyOffset, _xyOffset),
+            Random.Range(-_xyOffset, _xyOffset),
             _player.position.z + _spawnDistanceFromPlayer);
     }
 
@@ -84,7 +91,7 @@ public class UFOSaucer : MonoBehaviour
         for (int i = 0; i < _trajectoryVectors.Count; i++)
         {
             float distance = Vector3.Distance(transform.position, _trajectoryVectors[i]);
-            while (distance > 0.5f)
+            while (distance > 0.5f && !_gameState.GameOver)
             {
                 yield return null;
                 transform.position = Vector3.MoveTowards(transform.position, _trajectoryVectors[i], Time.deltaTime * _movementSpeed);
@@ -117,5 +124,7 @@ public class UFOSaucer : MonoBehaviour
         {
             Instantiate(_mysteryBox, transform.position, Quaternion.identity);
         }
+        _ufoOnScene.StopAudio();
+        OnDie?.Invoke();
     }
 }

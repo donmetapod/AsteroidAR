@@ -22,20 +22,34 @@ public class AudioSfx : ScriptableObject
     private AudioSource _audioSource;
     private GameObject _sourceGO;
     
-    public void PlayAudio()
+    public void PlayAudio(GameObject parent)
     {
-        if (_sourceGO == null)
+        if (parent != null)
         {
-            _sourceGO = new GameObject($"Audio {AudioParameters.AudioName}");
-            _sourceGO.AddComponent<AudioSource>();
-            _audioSource = _sourceGO.GetComponent<AudioSource>();
+            parent.AddComponent<AudioSource>();
+            _audioSource = parent.GetComponent<AudioSource>();
         }
+        else
+        {
+            if (_sourceGO == null)
+            {
+                _sourceGO = new GameObject($"Audio {AudioParameters.AudioName}");
+                _sourceGO.AddComponent<AudioSource>();
+                _audioSource = _sourceGO.GetComponent<AudioSource>();
+            }    
+        }
+        
         _audioSource.spatialBlend = AudioParameters.SpatialBlend;
         _audioSource.clip = AudioParameters.AudioClips[Random.Range(0, AudioParameters.AudioClips.Length)];
         _audioSource.volume = AudioParameters.Volume;
         _audioSource.pitch = AudioParameters.Pitch;
         _audioSource.loop = AudioParameters.Loop;
         _audioSource.PlayDelayed(AudioParameters.StartDelay);
+    }
+
+    public void PlayAudioWithoutParenting()
+    {
+        PlayAudio(null);
     }
 
     public void StopAudio()

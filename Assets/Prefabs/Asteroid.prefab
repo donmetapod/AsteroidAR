@@ -19,7 +19,9 @@ GameObject:
   - component: {fileID: 4518201632574356141}
   - component: {fileID: 6639763950399772729}
   - component: {fileID: -925017357645051294}
+  - component: {fileID: -148373723928602618}
   - component: {fileID: -6551156914329920400}
+  - component: {fileID: 189697023415136649}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Enemy
@@ -239,6 +241,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -148373723928602618}
+        m_TargetAssemblyTypeName: CreateObject, Assembly-CSharp
+        m_MethodName: CreateNewObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6639763950399772729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +288,27 @@ MonoBehaviour:
   _xRandomizationFactor: 1
   _yRandomizationFactor: 1
   _zRandomizationFactor: 1
+--- !u!114 &-148373723928602618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336306867728619969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2848672122891464380a9cc61a361657, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectToCreate: {fileID: 153632, guid: 317bb99cc9afa994d9264ea9891658ce, type: 3}
+  _useSpawnPoint: 0
+  _chance: 1
+  _referenceObjectRotation: {fileID: 0}
+  _amountOfObjects: 1
+  _randomizeInitialPositon: 0
+  _xRandomizationFactor: 1
+  _yRandomizationFactor: 1
+  _zRandomizationFactor: 1
 --- !u!114 &-6551156914329920400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,3 +323,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetName: Planet
   _randomOffset: {x: 2, y: 2, z: 2}
+--- !u!114 &189697023415136649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3336306867728619969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f848f4e5498f33641a447877c0c68460, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameState: {fileID: 11400000, guid: c6eebee520c18bc45a2eadaca487b6c9, type: 2}

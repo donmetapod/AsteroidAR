@@ -48,6 +48,11 @@ PrefabInstance:
       propertyPath: _amountOfObjects
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -148373723928602618, guid: 5dd86541ad6490f4ab1e4fab4051f673,
+        type: 3}
+      propertyPath: _objectToCreate
+      value: 
+      objectReference: {fileID: 162022, guid: a2290ddacf4cd53489dbb7e6ea9a5824, type: 3}
     - target: {fileID: 2619409742405294522, guid: 5dd86541ad6490f4ab1e4fab4051f673,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -61,13 +66,13 @@ PrefabInstance:
     - target: {fileID: 4518201632574356141, guid: 5dd86541ad6490f4ab1e4fab4051f673,
         type: 3}
       propertyPath: OnDestroy.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4518201632574356141, guid: 5dd86541ad6490f4ab1e4fab4051f673,
         type: 3}
       propertyPath: OnDestroy.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 5973676375999324759}
+      objectReference: {fileID: 6647225625869414451}
     - target: {fileID: 4518201632574356141, guid: 5dd86541ad6490f4ab1e4fab4051f673,
         type: 3}
       propertyPath: OnDestroy.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -170,14 +175,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5dd86541ad6490f4ab1e4fab4051f673, type: 3}
---- !u!114 &5973676375999324759 stripped
+--- !u!114 &6647225625869414451 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -925017357645051294, guid: 5dd86541ad6490f4ab1e4fab4051f673,
+  m_CorrespondingSourceObject: {fileID: -148373723928602618, guid: 5dd86541ad6490f4ab1e4fab4051f673,
     type: 3}
   m_PrefabInstance: {fileID: 2436287551014316085}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2848672122891464380a9cc61a361657, type: 3}
   m_Name: 
