@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e9a6465edded645834647905d35331, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
-  Score: 280
+  Score: 0
   OnIncreaseScore:
     m_PersistentCalls:
       m_Calls: []

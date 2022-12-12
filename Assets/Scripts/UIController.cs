@@ -48,4 +48,12 @@ public class UIController : MonoBehaviour
     {
         SceneLoader.LoadScene("Game");
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Messenger.Instance.EnqueueMessage("A button pressed", 3);
+        }
+    }
 }

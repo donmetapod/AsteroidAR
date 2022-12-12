@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 public class GameManager : MonoBehaviour
 {

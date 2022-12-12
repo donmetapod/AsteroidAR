@@ -23,6 +23,7 @@ public class GameState : ScriptableObject
     {
         Score += amount;
         OnIncreaseScore?.Invoke(Score);
+        Messenger.Instance.EnqueueMessage("Score increased", 5);
     }
     
 }
