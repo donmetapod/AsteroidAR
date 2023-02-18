@@ -7,7 +7,7 @@ public class RandomizeUIElements : MonoBehaviour
     [SerializeField] private float _scaleMaxValue = 1f;
     [SerializeField] private float _positionThreshold = 5;
     
-    void Start()
+    void OnEnable()
     {
         foreach (var e in _elements)
         {
