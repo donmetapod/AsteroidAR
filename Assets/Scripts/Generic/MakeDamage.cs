@@ -15,8 +15,8 @@ public class MakeDamage : MonoBehaviour
         {
             if (other.TryGetComponent(out Health health))
             {
-                if(_logTrigger)
-                    Messenger.Instance.EnqueueMessage($"Trigger with {other.name}", 3);
+                // if(_logTrigger)
+                //     Messenger.Instance.EnqueueMessage($"Trigger with {other.name}", 3);
                 if (health.enabled)
                 {
                     health.ReceiveDamage(_damagePower);

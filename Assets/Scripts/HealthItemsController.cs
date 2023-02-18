@@ -28,7 +28,7 @@ public class HealthItemsController : MonoBehaviour
             // _spawnedItems++;
             // _scoreThreshold /= _spawnedItems;
             _scoreThreshold += _originalScoreThreshold;
-            Messenger.Instance.EnqueueMessage("Health item created", 5);
+            // Messenger.Instance.EnqueueMessage("Health item created", 5);
         }
     }
 }

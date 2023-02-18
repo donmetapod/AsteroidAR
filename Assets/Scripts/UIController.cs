@@ -44,16 +44,16 @@ public class UIController : MonoBehaviour
         _finalScoreText.text = $"Score: {_gameState.Score}";
     }
 
-    public void RetryGame()
-    {
-        SceneLoader.LoadScene("Game");
-    }
+    // public void RetryGame()
+    // {
+    //     SceneLoader.LoadScene("Game");
+    // }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Messenger.Instance.EnqueueMessage("A button pressed", 3);
-        }
-    }
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.A))
+    //     {
+    //         Messenger.Instance.EnqueueMessage("A button pressed", 3);
+    //     }
+    // }
 }

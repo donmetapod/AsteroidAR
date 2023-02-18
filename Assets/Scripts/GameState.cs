@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "GameData", menuName = "ScriptableObjects/CreateGameDataAsset")]
 public class GameState : ScriptableObject
@@ -23,7 +24,12 @@ public class GameState : ScriptableObject
     {
         Score += amount;
         OnIncreaseScore?.Invoke(Score);
-        Messenger.Instance.EnqueueMessage("Score increased", 5);
+        // Messenger.Instance.EnqueueMessage("Score increased", 5);
     }
-    
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
 }
