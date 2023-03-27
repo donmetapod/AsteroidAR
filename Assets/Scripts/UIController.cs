@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
         _gameState.OnGameOver.RemoveListener(ShowGameOverScreen);
     }
     
-    public void UpdateScoreUI(int newScore)
+    private void UpdateScoreUI(int newScore)
     {
         _scoreText.text = $"Score {newScore}";
     }
